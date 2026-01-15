@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int reverse(int x) {
+        if (x == INT_MIN) return 0; // because |-2^31| = 2^31 > INT_MAX so abs(x) cannot work
+        long long n = 0 ;
+        bool flag = true ;
+        if (x < 0){
+            flag = false ;
+        } 
+        x = abs(x) ;
+        while (x > 0){
+            n = n * 10 + x % 10 ;
+            x /= 10 ;
+        }
+        if (!flag) n = - n ;
+        if (n > INT_MAX or n < INT_MIN) return 0 ;
+        return int(n) ;
+    }
+};
